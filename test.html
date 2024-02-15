@@ -1,0 +1,362 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/DLS/style/images/favicon.ico" type="image/x-icon">
+	<title>독서로 DLS</title>
+	
+<!--     <link rel="stylesheet" href="/DLS/kcase/lib/css/bootstrap.min.css"/> -->
+    <link rel="stylesheet" href="/DLS/kcase/lib/css/kcase.css"/>
+    <link rel="stylesheet" href="/DLS/kcase/lib/css/sample.css"/>
+	
+	<link rel="stylesheet" href="/DLS/lib/jqxgrid/jqwidgets/styles/jqx.base.css?version=" type="text/css" />
+	<link rel="stylesheet" href="/DLS/lib/jqxgrid/jqwidgets/styles/jqx.energyblue.css?version=" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="/DLS/style/css/font.css?version=">
+	<link type="text/css" rel="stylesheet" href="/DLS/style/css/daterangepicker.css?version=">
+	<link type="text/css" rel="stylesheet" href="/DLS/style/css/style.css?version=">
+	
+    <script src="/DLS/kcase/lib/js/jquery-1.9.1.js"></script>
+    <script src="/DLS/kcase/lib/js/jquery-ui.js"></script>
+    <script src="/DLS/kcase/lib/js/kcase_os_check.js"></script>
+    <script src="/DLS/kcase/EPKICommon.js"></script>
+    
+</head>
+<body class="">
+	<input type="hidden" id="login_page_id" value="ALL">
+	<div class="wrap login">
+        <!-- st:content -->
+        <div class="content">
+            <h1 class="logo"><img src="/DLS/style/images/logo.png" alt="독서로 DLS"></h1>
+            <div class="member-login-wrap">
+                <div class="member-login-tit">
+                    <h2 style="text-align:center;font-weight:600;border:none">로그인</h2>
+                    <div class="sTxt">로그인을 하시면 더욱 다양하고 유익한 정보를 얻을 수 있습니다.</div>
+                </div>
+                <div class="member-login">
+                <center>
+                <div class="teacher-login-wrap" style="min-height: 500px;height:auto" >
+                    <div class="teacher-login-tit">
+                        <div class="titImg"><img src="/DLS/style/images/img_member_teacher.svg" alt="DLS"></div>
+                        <h3>학교관리자/교사회원/DLS관리자 로그인</h3>
+                    </div>
+                    <div class="teacher-login">
+                        <div class="sTit hidden">인증서 로그인</div>
+                        <div class="login-con">
+                            <img src="/DLS/style/images/img_member_onepass.png" alt="디지털원패스">
+                            <div class="sTxt">교사회원인 경우는 로그인 시에 </br>반드시 인증서 등록을 하셔야 정상적인 이용이 가능합니다.</div>
+                        </div>
+                        <div style="display:flex">
+	                        <div>
+	                        	<button id="authenticate_login" class="btn btn-aut-bg">인증서로그인</button>
+	                       	</div>
+	                       	<div>
+	                       		<button id="reg_aut_input" class="btn btn-aut">인증서 등록</button>
+	                       		<button id="disconnect_aut_bnt" class="btn btn-aut">인증서 끊기</button>
+	                       	</div>
+                       	</div>
+                       	<div class="student-login" id="reg_aut_form" style="display:none;padding:15px 0;">
+	                        <div>
+	                            <label for="aut_login_id">아이디</label>
+	                            <input id="aut_login_id" class="form-control" name="aut_login_id" type="text" placeholder="아이디를 입력해 주세요" value="" />
+	                        </div>
+	                        <div>
+	                            <label for="aut_login_pw">비밀번호</label>
+	                            <input id="aut_login_pw" class="form-control" name="aut_login_pw" type="password" placeholder="비밀번호를 입력해 주세요" autocomplete="off">
+	                        </div>
+	                        <button id="reg_aut_btn" class="btn btn-submit">등록</button>
+	                    </div>
+                    </div>
+                </div>
+                <div class="student-login-wrap">
+                    <div class="teacher-login-tit">
+                        <div class="titImg"><img src="/DLS/style/images/img_member_student.svg" alt="로그인"></div>
+                        <h3>DLS 로그인</h3>
+                    </div>
+                    <div class="student-login">
+                        <div>
+                            <label for="lgID">아이디</label>
+                            <input id="lgID" class="form-control" name="lgID" type="text" placeholder="아이디를 입력해 주세요" value="" />
+                        </div>
+                        <div>
+                            <label for="lgPW">비밀번호</label>
+                            <input id="lgPW" class="form-control" name="lgPW" type="password" placeholder="비밀번호를 입력해 주세요" autocomplete="off">
+                        </div>
+                        <button id="loginBtn" class="btn btn-submit">로그인</button>
+                    </div>
+
+                </div>
+                </center>
+            </div>
+            </div>
+
+
+
+        </div>
+        <!-- //end:content -->
+
+	</div>
+    <!-- 공통 스크립트 include -->
+  	
+    
+ 	<script type="text/javascript" src="/DLS/lib/jquery/jquery-2.2.3.min.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxcore.js?version="></script>
+	   
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxbuttons.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxscrollbar.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxmenu.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxcheckbox.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.selection.js?version="></script> 
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.columnsresize.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.sort.js?version="></script> 
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.pager.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.columnsreorder.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.edit.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.grouping.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.aggregates.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.filter.js?version="></script>
+	
+	 
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxdata.js?version="></script> 	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxdata.export.js?version="></script> 
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxgrid.export.js?version="></script> 
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxexport.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxeditor.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxdropdownbutton.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxdropdownlist.js?version="></script>  
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxlistbox.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxcombobox.js?version="></script>
+	
+	<!-- popup관련 -->
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxwindow.js?version="></script>
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxpanel.js?version="></script>
+	
+	<!-- loader관련 -->
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxloader.js?version="></script>
+	
+	<!-- tab관련 -->
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/jqxtabs.js?version="></script>
+	
+	<!-- JSZip -->
+	<script type="text/javascript" src="/DLS/lib/jqxgrid/jqwidgets/scripts/jszip.min.js?version="></script>
+	
+	<!-- ECO_생성 공통 스크립트 -->
+	<script type="text/javascript" src="/DLS/js/common/common.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/dlscode.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/grid/dlsGrid.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/grid/dlsGridPager.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/grid/testDlsGrid.js?version="></script>
+	
+	<script type="text/javascript" src="/DLS/js/workScript/commonPopup/commonPopup.js?version="></script>
+	
+	<!-- 엑셀 반출을 위해 추가 -->
+	<script type="text/javascript" src="/DLS/js/common/lib/xlsx.full.min.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/lib/FileSaver.min.js?version="></script>
+	
+	<!-- design -->
+	<script type="text/javascript" src="/DLS/js/common/script.ui.js?version="></script>
+
+	<!-- daterangepicker -->
+	<script type="text/javascript" src="/DLS/js/common/lib/moment.min.js?version="></script>
+	<script type="text/javascript" src="/DLS/js/common/lib/daterangepicker.js?version="></script>
+	<!-- CHART 관련 -->
+	<script src="/DLS/js/common/lib/Chart.min.js?version="></script>
+    <script src="/DLS/js/common/lib/chart.js?version="></script>
+	
+	
+	<script type="text/javascript" src="/DLS/js/workScript/loginMain.js?version="></script>
+	<script type="text/javascript">
+		$(document).ready(function(){			
+			$("#loginBtn").on("click", executeLogin);
+			var sessionId = '8E9A871709CFDDBE99B736A2A64AC322.DLS-A11';
+	     	var serverCert = 'MIIF1DCCBLygAwIBAgIUAMm61TxY3Z/8yfErSmwAHaWnX7IwDQYJKoZIhvcNAQELBQAwUDELMAkGA1UEBhMCS1IxHDAaBgNVBAoME0dvdmVybm1lbnQgb2YgS29yZWExDTALBgNVBAsMBEdQS0kxFDASBgNVBAMMC0NBMTM0MTAwMDMxMB4XDTI0MDEwNDA0NDE1OFoXDTI2MDQwNDA0NDE1N1owcTELMAkGA1UEBhMCS1IxHDAaBgNVBAoME0dvdmVybm1lbnQgb2YgS29yZWExGDAWBgNVBAsMD0dyb3VwIG9mIFNlcnZlcjESMBAGA1UECwwJ6rWQ7Jyh67aAMRYwFAYDVQQDDA1TVlJCNTUwNjI5MjI2MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzqBh7/yQTgV9lK+RzQOxsIohQIHyTl2p4q8nRl9To3cNq9XliW6cIdjY3GrTj9l53/FOthrK9fMeBXUjDrlw7NHAsykJmd2hHGeWhVWN1Qhv5IDvzZPKTvDiQp2d33BaQQFAW7i0+H7n0hsvXFCeqUzK5c15oFqyJ8eCDGXT6w2VEwfr1j+lBLoRG06Fl9gQwSIX82eYPLnF7GoMOG67IyR5c4wB5nFQ0Ian7zVc/OCLD4YCn/WiOSns8HIZhrvc+NAFDw6HCk2jvmCEEJMNvU8m5i7JH9xF7S1QvGK3/1uIXccWjlpDjNUNFr0KtXC6Gl2H3eQRZIPrwL/umaKdZwIDAQABo4ICgzCCAn8wNwYIKwYBBQUHAQEEKzApMCcGCCsGAQUFBzABhhtodHRwOi8vb2NzcC5lcGtpLmdvLmtyOjgwODAweQYDVR0jBHIwcIAUjkb4DZ54dqLMGuQPUX9S102cWxuhVKRSMFAxCzAJBgNVBAYTAktSMRwwGgYDVQQKDBNHb3Zlcm5tZW50IG9mIEtvcmVhMQ0wCwYDVQQLDARHUEtJMRQwEgYDVQQDDAtHUEtJUm9vdENBMYICJxkwHQYDVR0OBBYEFPESHQeDQj2pNqeE7y8gacqBM6ffMA4GA1UdDwEB/wQEAwIEMDBtBgNVHSABAf8EYzBhMF8GCiqDGoaNIQUDAQcwUTAqBggrBgEFBQcCARYeaHR0cDovL3d3dy5lcGtpLmdvLmtyL2Nwcy5odG1sMCMGCCsGAQUFBwICMBcaFUVkdWNhdGlvbiBDZXJ0aWZpY2F0ZTAxBgNVHRIEKjAooCYGCSqDGoyaRAoBAaAZMBcMFeq1kOycoeqzvO2Vmeq4sOyIoOu2gDBtBgNVHREEZjBkoGIGCSqDGoyaRAoBAaBVMFMMDjE3NS40NS4yMTUuMTY0MEEwPwYKKoMajJpECgEBATAxMAsGCWCGSAFlAwQCAaAiBCCZ7ztrlEspbhBhaMt7uiPSCgZphhobq46mlUFdOg9djzCBiAYDVR0fBIGAMH4wfKB6oHiGdmxkYXA6Ly9sZGFwLmVwa2kuZ28ua3I6Mzg5L2NuPWNybDFwMWRwMjIyMjQsb3U9Q1JMLG91PUdQS0ksbz1Hb3Zlcm5tZW50IG9mIEtvcmVhLGM9a3I/Y2VydGlmaWNhdGVSZXZvY2F0aW9uTGlzdDtiaW5hcnkwDQYJKoZIhvcNAQELBQADggEBALNfJ/TprIP8rAef5mwoGthmBeOPSoTFeKcQBXOJnD2+uF+KsFWzmk5dNCErMNfNdB9A3I8RGFnO/6EVy7OwjxADWG9PzTh/bywXuspAPSzZOh7ta7UEbv57P4C8mmgt/ShoO0o4kHnDySX+nWhyRKVsgwfMGO49KhIWU6lrhE4Uoi51RnkrpE6wHRkNwDgPwEJMHCpAxaOexvz8RnpTEcVCSL/Hhgfc7j4mDfOvcKXGfdFgZjDqeVehH4gTadWGdOo8FM5RQCA8G1/L24jZu268G0Flr/DtQsobJjJnNF42srETyML6N1NAUlU8GklUfmbJ3+petLvO8J10F9kTuw0=';
+	    	
+	     	/**
+	     	 * @Description 로그인 시 공인인증서 창 생성 및 로그인 시 처리 
+	     	 * @function success : 성공 시 함수
+	     	 *			  error  : 실패 시 함수
+	     	 */
+	    	$("#authenticate_login").on("click",function(){
+	    		epki.init(sessionId);
+	            var algorithm = "SEED";
+	
+	            /* Call Back Function Definition */
+	            var success = function(output) {
+	            	loginToAuthentication(output);
+	            };
+	            var error = function(errCode, errMsg) {
+	                alert(errCode + ": " + errMsg);
+	            };
+	            
+	            setTimeout(function(){epki.reqSecChannelAndLogin(serverCert, algorithm, sessionId, success, error);},1000);
+	    	})
+	    	
+	    	/**
+	     	 * @Description 인증서 등록 화면 보여주기 
+	     	 */
+	    	$("#reg_aut_input").on("click",function(){
+	    		epki.init(sessionId);
+	    		$("#reg_aut_form").slideToggle();
+			})
+			
+			/**
+	     	 * @Description 인증서 등록 전 아이디 비밀번호 확인
+	     	 */
+			$("#reg_aut_btn").on("click",function(){
+				
+				let aut_id = $("#aut_login_id").val();
+				let aut_pw = $("#aut_login_pw").val();
+				let page_id = $("#login_page_id").val();
+
+				if(aut_id == undefined || "" == aut_id)
+				{
+					messageOnly("아이디를 입력해 주세요");
+					return;
+				}
+				
+				if(aut_pw == undefined || "" == aut_pw)
+				{
+					messageOnly("패스워드를 입력해 주세요");
+					return;
+				}
+				
+				if(page_id == undefined || "" == page_id)
+				{
+					messageOnly("허용된  페이지가 아닙니다.");
+					return;
+				}
+				
+				var param = {};
+				param.id 		= aut_id.toUpperCase();
+				param.pw  		= aut_pw;
+				param.page_id	= page_id;
+				
+				$.ajax({
+					url     : "/DLS/authentication/autRegConfirm.do", //*
+					type    : "POST",
+					dataType: "json",
+					async   : false,
+					data    : param,
+					success : function(data) {
+						if(data.status =="SUCCESS"){				
+							let member_key = data.member_key 
+							regAuthenticatePopup(member_key);
+						}else{
+							messageOnly(data.statusDescription);
+						}
+						
+					}
+				});
+				
+			})
+			
+			/**
+	     	 * @Description 인증서 등록 처리시 인증서 화면
+	     	 */
+			function regAuthenticatePopup(member_key){
+				var algorithm = "SEED";
+				
+	            /* Call Back Function Definition */
+	            var success = function(output) {
+	            	excuteRegAut(member_key,output);
+	            };
+	            var error = function(errCode, errMsg) {
+	                alert(errCode + ": " + errMsg);
+	            };
+				epki.reqSecChannelAndLogin(serverCert, algorithm, sessionId, success, error);
+			}
+			
+	    	/**
+	     	 * @Description 인증서 등록 처리 
+	     	 */
+			function excuteRegAut(member_key,req_data){
+				
+				$.ajax({
+					url:"/DLS/authentication/regAuthentication.do",
+					type:"POST",
+					dataType:"json",
+					data:{member_key:member_key,req_data:req_data},
+					success:function(obj){
+						messageOnly(obj.statusDescription);
+					}
+				})
+				
+			}
+			
+			function loginToAuthentication(output){
+				let page_id = $("#login_page_id").val();
+				
+				$.ajax({
+					url:"/DLS/authentication/loginToAuthentication.do",
+					type:"POST",
+					dataType:"json",
+					data:{req_data:output,page_id:page_id},
+					success:function(obj){
+						if(obj.status =="SUCCESS"){				
+							let member_info = obj.member_info;
+							
+							localStorage.setItem("member_info",JSON.stringify(member_info));
+							localStorage.setItem("logout_time_count",member_info.logout_timer);
+							
+							getCodeList();
+						}else{
+							messageOnly(obj.statusDescription);
+						}
+					}
+				})
+			}
+			
+			$("#disconnect_aut_bnt").on("click",function(){
+				
+				epki.init(sessionId);
+	            var algorithm = "SEED";
+	
+	            /* Call Back Function Definition */
+	            var success = function(output) {
+	            	disconnectAut(output);
+	            };
+	            var error = function(errCode, errMsg) {
+	                alert(errCode + ": " + errMsg);
+	            };
+	            
+	            confirmMessage("인증서 연결을 끊으시겠습니까?",function(e,flag){
+					if(flag){						
+	            		epki.reqSecChannelAndLogin(serverCert, algorithm, sessionId, success, error);
+					}	            	
+	            })
+				
+			})
+			
+			function disconnectAut(output){
+				$.ajax({
+					url:"/DLS/authentication/disconnectAut.do",
+					type:"POST",
+					dataType:"json",
+					data:{req_data:output},
+					success:function(obj){
+						messageOnly(obj.statusDescription);
+					}
+				})
+			}
+		})
+		
+		
+		
+		
+	</script>
+  	<div id="dlsLoader" style="z-index: 99999;"></div>
+</body>
+
+</html>
