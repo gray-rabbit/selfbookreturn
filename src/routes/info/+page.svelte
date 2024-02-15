@@ -37,8 +37,16 @@
 					}
 				}
 			}
+			focusInput();
 		};
 	};
+	const focusInput = () => {
+		const input = document.getElementById('keyword') as HTMLInputElement;
+		input.focus();
+	};
+	onMount(() => {
+		focusInput();
+	});
 </script>
 
 {#if currentUser}
